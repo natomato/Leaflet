@@ -4187,7 +4187,7 @@ L.Marker.include({
 
 		if (!this._popupHandlersAdded) {
 			this
-			    .on('click', this.togglePopup, this)
+			    .on('click', this.openPopup, this)
 			    .on('remove', this.closePopup, this)
 			    .on('move', this._movePopup, this);
 			this._popupHandlersAdded = true;
@@ -5018,7 +5018,7 @@ L.Browser.canvas = (function () {
 	return !!document.createElement('canvas').getContext;
 }());
 
-L.Path = (L.Path.SVG && !window.L_PREFER_CANVAS) || !L.Browser.canvas ? L.Path : L.Path.extend({
+L.Path = (L.Path.SVG && !L_PREFER_CANVAS) || !L.Browser.canvas ? L.Path : L.Path.extend({
 	statics: {
 		//CLIP_PADDING: 0.02, // not sure if there's a need to set it to a small value
 		CANVAS: true,
@@ -5172,7 +5172,7 @@ L.Path = (L.Path.SVG && !window.L_PREFER_CANVAS) || !L.Browser.canvas ? L.Path :
 	}
 });
 
-L.Map.include((L.Path.SVG && !window.L_PREFER_CANVAS) || !L.Browser.canvas ? {} : {
+L.Map.include((L.Path.SVG && !L_PREFER_CANVAS) || !L.Browser.canvas ? {} : {
 	_initPathRoot: function () {
 		var root = this._pathRoot,
 		    ctx;
